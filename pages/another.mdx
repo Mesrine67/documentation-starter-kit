@@ -1,9 +1,13 @@
 # Another Page
 
-```js filename="demo.js" {3} copy
-let a = 1;
+```lua filename="exemple.lua" {3} copy
 
-console.log(a);
+local playerState = LocalPlayer.state
+
+RegisterCommand('stateBagCrew', function(source, args, rawCommand)
+    print('Crew: '..json.encode(playerState.crew, {indent = true}))
+end)
+
 ```
 
 ## Component
