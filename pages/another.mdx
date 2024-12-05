@@ -1,35 +1,22 @@
 # Another Page
 
+### Lua Exemple
+
+Voici un exemple de script Lua où nous affichons l'état du "crew" d'un joueur à l'aide de la commande `stateBagCrew`.
+
 ```lua filename="exemple.lua" {3} copy
 
+-- Récupération de l'état du joueur
 local playerState = LocalPlayer.state
 
+-- Commande pour afficher l'état du "crew"
 RegisterCommand('stateBagCrew', function(source, args, rawCommand)
+    -- Affichage de l'état du crew dans la console
     print('Crew: '..json.encode(playerState.crew, {indent = true}))
 end)
 
 ```
 
-## Component
-
-import { useState } from 'react'
-
-{/* Import CSS modules */}
-import styles from '../components/counters.module.css'
-
-export const Counter = () => {
-  const [count, setCount] = useState(0);
-  return (
-    <div>
-      <button onClick={() => setCount(count + 1)} className={styles.counter}>Clicked {count} times</button>
-    </div>
-  );
-};
-
-<Counter/>
-
-## External Component
-
-import Counters from '../components/counters'
-
-<Counters />
+### Explication
+- Ce script utilise `LocalPlayer.state` pour récupérer l'état actuel du joueur, notamment son "crew".
+- La commande `stateBagCrew` permet d'afficher les informations sur le crew dans la console en format JSON.
