@@ -1,31 +1,31 @@
-# Système de Crew pour ESX
+# Système de Crew ESX
 
-Le **système de crew** pour ESX permet de gérer des **gangs**, **crews** et **mafias**, offrant ainsi une structure dynamique pour les joueurs qui souhaitent se regrouper sous une même bannière et participer à des activités collectives sur le serveur. Ce système s'adapte parfaitement à vos besoins en termes de **gestion de jobs**, de **rangs** et de **permissions**, avec la possibilité d'étendre ses fonctionnalités à l'avenir pour intégrer des jobs personnalisés dans le cadre des crews.
+Le **système de crew** pour ESX permet de gérer des **gangs**, **crews** et **mafias**, offrant ainsi une structure dynamique pour les joueurs qui souhaitent se regrouper sous une même bannière et participer à des activités collectives sur le serveur. Il est essentiel de comprendre que **sans crew, gang ou mafia**, les joueurs ne pourront pas bénéficier des fonctionnalités associées à ce système. Ce système repose entièrement sur la gestion et l’interaction des joueurs au sein de groupes.
 
 ## Fonctionnalités principales :
 
 ### 1. **Création, Édition et Suppression de Crews, Gangs et Mafias**
-- **Création de crews** : Les administrateurs peuvent créer des **gangs**, des **crews**, ou des **mafias**, attribuer un nom, des rôles et des membres à chaque équipe.
-- **Modification des crews** : Il est possible de modifier les informations du crew (nom, membres, avantages, etc.), et d’ajouter de nouveaux **jobs** spécifiques à chaque crew.
-- **Suppression de crews** : Supprimez un crew, un gang ou une mafia si nécessaire, avec une gestion simplifiée des équipes sur votre serveur.
+- **Création de crews** : Les administrateurs peuvent créer des **gangs**, des **crews**, ou des **mafias**, attribuer un nom, des rôles et des membres à chaque équipe. Ce système **nécessite un crew pour fonctionner** : sans crew, vous ne pourrez pas interagir avec les fonctionnalités du système.
+- **Modification des crews** : Modifiez les informations du crew (nom, membres, avantages, etc.), et ajoutez des **jobs** spécifiques à chaque crew.
+- **Suppression de crews** : Supprimez un crew, un gang ou une mafia si nécessaire.
 
 ### 2. **Gestion des Jobs au sein des Crews**
 Dans le cadre de chaque **gang**, **crew** ou **mafia**, les **jobs** peuvent être personnalisés et associés à des rôles spécifiques :
-- **Création de jobs personnalisés** : Attribuez des jobs spécifiques aux membres des crews, comme "Chef", "Membre", "Recrue", ou des rôles plus spécifiques comme "Dealer", "Sicario", "Corleone", etc., en fonction du type de crew (gang, mafia, ou autre).
-- **Édition des jobs** : Modifiez les permissions associées à chaque job, ce qui peut inclure des droits spécifiques tels que l’accès à des zones réservées, la possibilité d’organiser des activités ou d’effectuer des actions spécifiques.
-- **Suppression des jobs** : Si un job ou un rôle devient obsolète ou inutilisé, vous pouvez le supprimer facilement.
+- **Création de jobs personnalisés** : Attribuez des jobs spécifiques aux membres des crews (par exemple, "Chef", "Membre", "Recrue", ou des rôles comme "Dealer", "Sicario", "Corleone", etc.).
+- **Édition des jobs** : Modifiez les permissions associées à chaque job, comme l’accès à des zones réservées, la possibilité d’organiser des activités ou d’effectuer des actions spécifiques.
+- **Suppression des jobs** : Supprimez un job si nécessaire, ou réorganisez les rôles au sein du crew.
 
 ### 3. **Gestion des Membres et des Rangs**
 Les membres peuvent être ajoutés, modifiés, ou retirés des crews, et chaque membre peut se voir attribuer un **rang** avec des permissions personnalisées :
 - **Attribution de rôles** : Chaque membre peut être promu ou rétrogradé dans les rangs, ce qui influence ses permissions au sein du crew.
-- **Gestion des permissions par rang** : Vous pouvez définir des **permissions spécifiques** à chaque rang, permettant de limiter ou d’étendre l’accès aux ressources et aux actions d’un membre.
+- **Gestion des permissions par rang** : Définissez des **permissions spécifiques** à chaque rang, permettant de limiter ou d’étendre l’accès aux ressources et aux actions d’un membre.
 
 ### 4. **Commandes Spécifiques pour les Crews**
 Un ensemble de commandes personnalisées est disponible pour gérer les crews et leurs membres :
-- **/createcrew [nom]** : Crée un nouveau crew (gang, mafia).
+- **/createcrew [nom]** : Crée un nouveau crew (gang, mafia). Sans crew, cette commande n’aura aucun effet.
 - **/editcrew [nom] [modification]** : Modifie un crew existant (ajout de membres, changement de nom, etc.).
 - **/deletecrew [nom]** : Supprime un crew.
-- **/addjob [nom] [jobtype]** : Crée un job pour un crew (par exemple, "Chef", "Sicario").
+- **/addjob [nom] [jobtype]** : Crée un job pour un crew.
 - **/removejob [nom]** : Supprime un job existant.
 - **/assignjob [membre] [job]** : Associe un job à un membre spécifique du crew.
 - **/promote [membre]** : Promote un membre à un rôle supérieur.
@@ -34,9 +34,9 @@ Un ensemble de commandes personnalisées est disponible pour gérer les crews et
 - **/showcrew [nom]** : Affiche les détails d’un crew spécifique.
 
 ### 5. **Gestion des Gangs et Mafias**
-Ce système est spécialement conçu pour les **gangs** et **mafias**, offrant des fonctionnalités avancées pour gérer ces types de crews :
-- **Création de gangs/mafias** : Permet de créer des gangs ou mafias avec des structures hiérarchiques adaptées. Ces groupes peuvent avoir des codes de conduite, des missions spécifiques, ou des événements exclusifs.
-- **Activités et événements de groupe** : Permet aux gangs et mafias de s’organiser autour de missions collectives (vols, trafics, etc.) et d'interagir entre eux, voire d'entrer en conflit dans des événements organisés.
+Le système de crew est particulièrement adapté pour gérer des **gangs** et **mafias**, où les membres peuvent interagir autour de missions et de dynamiques spécifiques :
+- **Création de gangs/mafias** : Créez des gangs ou mafias avec des structures hiérarchiques adaptées. Ces groupes peuvent avoir des missions spécifiques ou des événements exclusifs.
+- **Activités et événements de groupe** : Permet aux gangs et mafias de s’organiser autour de missions collectives et de participer à des événements organisés par l’équipe.
 
 ### 6. **Avantages Exclusifs pour les Membres des Crews**
 Les membres de crews (gangs/mafias) peuvent bénéficier de nombreux **avantages exclusifs** :
@@ -59,7 +59,7 @@ Définissez des **rangs spécifiques** à chaque gang, crew ou mafia et gérez l
 
 ### Pourquoi utiliser ce système de crew ?
 
-Ce système vous permet d’**organiser les joueurs** en **équipes dynamiques** tout en intégrant une dimension **sociale** et **stratégique** au gameplay. Que ce soit pour des **gangs** dans un environnement RP, des **mafias** avec des activités illégales, ou des **crews** de type plus général, ce système crée des interactions uniques entre les joueurs et les groupes. Avec l'ajout de futures fonctionnalités liées aux jobs et à l'intégration avec ESX, ce système peut évoluer pour devenir un pilier central de l'organisation des joueurs sur votre serveur.
+Ce système vous permet d’**organiser les joueurs** en **équipes dynamiques**, mais il est important de souligner qu'il **n'a d'effet que si vous avez un crew**. Sans gang, mafia ou crew, les joueurs ne pourront pas bénéficier des fonctionnalités et avantages liés à ce système. En permettant aux joueurs de créer et gérer leurs propres équipes, vous ajoutez une dimension **sociale et stratégique** au gameplay. Les crews peuvent aussi servir de base pour des événements spéciaux, des missions, et des compétitions, offrant ainsi une expérience riche et dynamique aux joueurs.
 
 En résumé, ce système permet :
 - **De gérer les équipes, les jobs, et les membres de manière fluide**.
@@ -70,3 +70,7 @@ En résumé, ce système permet :
 ---
 
 Ce système est conçu pour être **adaptable** et **évolutif**, permettant aux administrateurs de l'ajuster selon les besoins de leur serveur. Si tu as des questions ou des suggestions d'amélioration, n’hésite pas à me contacter pour faire évoluer ce système !
+
+---
+
+J'ai ajouté la précision que **le système n'a de sens que si un crew, gang ou mafia existe**, afin d'éviter toute confusion sur son utilité sans ces éléments.
