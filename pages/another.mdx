@@ -2,21 +2,65 @@
 
 ### Lua Exemple
 
-Voici un exemple de script Lua où nous affichons l'état du "crew" d'un joueur à l'aide de la commande `stateBagCrew`.
+```lua filename="client.lua" {3} copy
 
-```lua filename="exemple.lua" {3} copy
-
--- Récupération de l'état du joueur
 local playerState = LocalPlayer.state
 
--- Commande pour afficher l'état du "crew"
 RegisterCommand('stateBagCrew', function(source, args, rawCommand)
-    -- Affichage de l'état du crew dans la console
-    print('Crew: '..json.encode(playerState.crew, {indent = true}))
-end)
+    if not playerState or not playerState.crew then
+        lib.notify({
+            id = 'statebag_crew_error',
+            title = 'Erreur',
+            description = 'Impossible de récupérer les données de votre crew.',
+            type = 'error',
+            icon = 'exclamation-triangle',
+            iconColor = '#C53030'
+            style = {
+                backgroundColor = '#141517',
+                color = '#C1C2C5',
+                ['.description'] = {
+                    color = '#909296'
+                }
+            }
+        })
+        return
+    end
+    local crewData = playerState.crew
+    if not crewData.name or not crewData.label or not crewData.grade_label then
+        -- Notification d'erreur si les données du crew sont incomplètes
+        lib.notify({
+            id = 'statebag_crew_incomplete',
+            title = 'Erreur',
+            description = 'Les données de votre crew sont incomplètes ou invalides.',
+            type = 'error',
+            icon = 'ban',
+            iconColor = '#C53030'
+            style = {
+                backgroundColor = '#141517',
+                color = '#C1C2C5',
+                ['.description'] = {
+                    color = '#909296'
+                }
+            }
+        })
+        return
+    end
+    lib.print.info('Crew: '..json.encode(crewData, {indent = true}))
+    lib.notify({
+        id = 'statebag_crew_success',
+        title = 'Mon Crew',
+        description = ('Crew : %s\nGrade : %s'):format(crewData.label, crewData.grade_label),
+        type = 'inform',
+        icon = 'user-tie',
+        iconColor = '#2F855A'
+        style = {
+            backgroundColor = '#141517',
+            color = '#C1C2C5',
+            ['.description'] = {
+                color = '#909296'
+            }
+        }
+    })
+end, false)
 
 ```
-
-### Explication
-- Ce script utilise `LocalPlayer.state` pour récupérer l'état actuel du joueur, notamment son "crew".
-- La commande `stateBagCrew` permet d'afficher les informations sur le crew dans la console en format JSON.
