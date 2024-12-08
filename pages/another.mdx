@@ -6,7 +6,8 @@
 
 local playerState = LocalPlayer.state
 
-RegisterCommand('stateBagCrew', function(source, args, rawCommand)
+RegisterCommand('crew', function(source, args, rawCommand)
+    -- Vérification des données d'état du joueur
     if not playerState or not playerState.crew then
         lib.notify({
             id = 'statebag_crew_error',
@@ -14,7 +15,7 @@ RegisterCommand('stateBagCrew', function(source, args, rawCommand)
             description = 'Impossible de récupérer les données de votre crew.',
             type = 'error',
             icon = 'exclamation-triangle',
-            iconColor = '#C53030'
+            iconColor = '#C53030',
             style = {
                 backgroundColor = '#141517',
                 color = '#C1C2C5',
@@ -25,16 +26,18 @@ RegisterCommand('stateBagCrew', function(source, args, rawCommand)
         })
         return
     end
+
     local crewData = playerState.crew
+
+    -- Vérification de la complétude des données du crew
     if not crewData.name or not crewData.label or not crewData.grade_label then
-        -- Notification d'erreur si les données du crew sont incomplètes
         lib.notify({
             id = 'statebag_crew_incomplete',
             title = 'Erreur',
             description = 'Les données de votre crew sont incomplètes ou invalides.',
             type = 'error',
             icon = 'ban',
-            iconColor = '#C53030'
+            iconColor = '#C53030',
             style = {
                 backgroundColor = '#141517',
                 color = '#C1C2C5',
@@ -45,14 +48,18 @@ RegisterCommand('stateBagCrew', function(source, args, rawCommand)
         })
         return
     end
-    lib.print.info('Crew: '..json.encode(crewData, {indent = true}))
+
+    -- Debug : Affichage des données du crew dans la console
+    print('Crew: '..json.encode(crewData, {indent = true}))
+
+    -- Notification de succès
     lib.notify({
         id = 'statebag_crew_success',
         title = 'Mon Crew',
         description = ('Crew : %s\nGrade : %s'):format(crewData.label, crewData.grade_label),
         type = 'inform',
         icon = 'user-tie',
-        iconColor = '#2F855A'
+        iconColor = '#2F855A',
         style = {
             backgroundColor = '#141517',
             color = '#C1C2C5',
@@ -62,5 +69,52 @@ RegisterCommand('stateBagCrew', function(source, args, rawCommand)
         }
     })
 end, false)
+
+```
+
+```lua filename="server.lua" {3} copy
+
+lib.addCommand('crew', {
+    help = 'Voir votre crew actuel',
+}, function(source, args)
+    -- Vérification de l'état du joueur côté serveur
+    local playerState = Player(source).state
+    if not playerState or not playerState.crew then
+        lib.notify(source, {
+            id = 'server_crew_error',
+            description = 'Impossible de récupérer les données du crew. Assurez-vous que vous avez un crew défini.',
+            type = 'error',
+            icon = 'exclamation-triangle',
+            iconColor = '#C53030',
+        })
+        return
+    end
+
+    local crewData = playerState.crew
+
+    -- Vérification des données du crew
+    if not crewData.name or not crewData.label or not crewData.grade_label then
+        lib.notify(source, {
+            id = 'server_crew_incomplete',
+            description = 'Les données du crew sont incomplètes ou invalides.',
+            type = 'error',
+            icon = 'ban',
+            iconColor = '#C53030',
+        })
+        return
+    end
+
+    -- Notification de succès
+    lib.notify(source, {
+        id = 'server_crew_success',
+        description = ('Crew : %s\nGrade : %s'):format(crewData.label, crewData.grade_label),
+        type = 'inform',
+        icon = 'user-tie',
+        iconColor = '#2F855A',
+    })
+
+    -- Debug : Affichage des données du crew dans la console serveur
+    lib.print.info('Crew: ' .. json.encode(crewData, {indent = true}))
+end)
 
 ```
